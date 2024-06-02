@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Details</title>
+    <style>
+        .details table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .details th, .details td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        .details th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <script>
+        function loadTable() {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'fetch_data.php', true);
+            xhr.onload = function() {
+                if (this.status === 200) {
+                    document.querySelector('.details').innerHTML = this.responseText;
+                }
+            };
+            xhr.send();
+        }
+
+        window.onload = function() {
+            loadTable();
+        }
+    </script>
+</head>
+<body>
+    <h2>Insert Student Details</h2>
+    <form action="insert_data.php" method="post">
+        Name: <input type="text" name="name" required><br>
+        Email: <input type="email" name="email" required><br>
+        Birth Date: <input type="date" name="birth" required><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Student Details</h2>
+    <button onclick="loadTable();">Reload Data</button>
+    <div class="details"></div>
+</body>
+</html>
