@@ -1,0 +1,212 @@
+/*!
+ * Start Bootstrap - Landing Page v5.0.3 (https://startbootstrap.com/template-overviews/landing-page)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-landing-page/blob/master/LICENSE)
+ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 0;
+}
+.container {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+}
+.header {
+  padding: 0 5% 0 5% !important;
+}
+/* #navbarNav {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 10px;
+  font-size: large;
+} */
+
+/* Additional styling to ensure margins are applied correctly */
+.container-fluid {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+.search-container {
+  margin-left: 20%;
+  position: relative !important;
+  right: 0 !important;
+}
+.search-container #search-text:focus {
+  background-color: rgb(236, 236, 236) !important;
+}
+.main {
+  min-height: 100vh;
+  margin: 0;
+}
+.header {
+  padding: 0 5% 0 5% !important;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  top: 0;
+}
+.footer {
+  text-align: center;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.main .blank-image {
+  background-image: url("../images/bg.jpg");
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 400px;
+  width: 100%;
+  opacity: 0.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.main .blank-text {
+  width: 75%;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.modal-overlay {
+  display: none;
+
+  position: fixed;
+  z-index: 1;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: white !important;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 250px !important;
+  height: 300px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+}
+.modal-content .security-image {
+  width: 100px;
+  margin: auto;
+}
+.modal-content #closeModal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 20px;
+  color: black;
+  cursor: pointer;
+  margin: 5px;
+}
+.modal-content button {
+  /* background-color: #478bfe; */
+}
+.modal-content button:hover {
+  background-color: #f1f1f1;
+}
+
+/* Food-List show */
+.food-container {
+  margin: 5% !important;
+  box-sizing: border-box;
+}
+.food-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  grid-gap: 4%;
+  box-sizing: border-box;
+}
+
+.food-list .food {
+  height: fit-content;
+  text-align: center;
+  margin: 20px;
+  padding: 20px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+}
+.food .card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.food .food-name {
+  font-size: 20px;
+  font-weight: bold;
+  height: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.food .food-desc {
+  font-size: 13px;
+  height: 100px; /* Set the fixed height */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis at the end */
+  display: -webkit-box; /* Use webkit box model */
+  -webkit-line-clamp: 5; /* Limit to 4 lines */
+  -webkit-box-orient: vertical; /* Vertical orientation for the box */
+}
+.food-list .food .btn {
+  width: 80%;
+}
+/* For samll PC screen */
+@media screen and (max-width: 1300px) {
+  .food-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* For tablet screen */
+@media screen and (max-width: 1000px) {
+  .food-list {
+    grid-template-columns: repeat(2, 1fr);
+    /* grid-gap: 10px !important; */
+  }
+  .food-list .food {
+    margin: 10px !important;
+    padding: 10px !important;
+  }
+}
+
+/* For mobile screen */
+@media screen and (max-width: 540px) {
+  .food-list {
+    margin: 2% !important;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 20px;
+  }
+}
