@@ -6,8 +6,8 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
      <title>Customer-login</title>
      <!-- Custom CSS -->
-     <link rel="stylesheet" href="./css/landingPage.css" />
-     <link rel="stylesheet" href="./css/customer-login.css" />
+     <link rel="stylesheet" href="../css/landingPage.css" />
+     <link rel="stylesheet" href="../css/customer-login.css" />
      <!-- Bootstap linking -->
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -15,7 +15,7 @@
 </head>
 
 <body>
-     <?php include 'header.php'; ?>
+     <?php include '../header.php'; ?>
      <!-- <div class="container text-center">
           <button id="loginButton" class="btn btn-primary mt-5">Login</button>
      </div> -->
@@ -24,6 +24,14 @@
           <div class="login-form">
                <h3 class="text-center text-decoration-underline">Customer Login</h3>
                <form action="customer_login_check.php" method="POST">
+                    <div class="mb-3">
+                         <?php if (isset($_GET['error'])) { ?>
+                              <p class="error"><?php echo $_GET['error']; ?></p>
+                         <?php } ?>
+                         <?php if (isset($_GET['success'])) { ?>
+                              <p class="success"><?php echo $_GET['success']; ?></p>
+                         <?php } ?>
+                    </div>
                     <div class="mb-3">
                          <label for="uname" class="form-label">Username</label>
                          <input type="text" class="form-control" id="username" name="uname" required>
@@ -41,16 +49,13 @@
           </div>
      </div>
 
-     <div class="food-container">
-          <div class="food-list" id="foodList">
-          </div>
-     </div>
 
-     <?php include 'footer.php'; ?>
+     <?php include '../show-food.php'; ?>
+     <?php include '../footer.php'; ?>
 
 
-     <script src="./javascript/home_page.js"></script>
-     <script src="./javascript/show-food.js"></script>
+     <script src="../javascript/home_page.js"></script>
+     <script src="../javascript/show-food.js"></script>
 </body>
 
 </html>

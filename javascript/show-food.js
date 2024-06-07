@@ -34,10 +34,9 @@
 // }
 // console.log("done");
 
-
-
 document.addEventListener("DOMContentLoaded", async function () {
   const foodList = document.getElementById("foodList");
+  const waitingText = document.getElementById("waiting_for_food");
   let mealCount = 16;
   const mealPromises = [];
 
@@ -56,6 +55,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const meals = await Promise.all(mealPromises);
 
   // Process and display each meal
+  waitingText.style.display = "none";
   meals.forEach((meal) => {
     // Truncate the instructions to the first 100 characters
     const truncatedInstructions =

@@ -47,7 +47,7 @@ if (
 		// hashing the password
 		$pass = md5($pass);
 
-		$sql = "SELECT * FROM users WHERE username='$uname' ";
+		$sql = "SELECT * FROM Customers WHERE username='$uname' ";
 		$result = mysqli_query($conn, $sql);
 
 		if (mysqli_num_rows($result) > 0) {
@@ -57,7 +57,7 @@ if (
 		}
 
 
-		$sql = "SELECT * FROM users WHERE email='$email' ";
+		$sql = "SELECT * FROM Customers WHERE email='$email' ";
 		$result = mysqli_query($conn, $sql);
 
 		if (mysqli_num_rows($result) > 0) {
@@ -65,7 +65,7 @@ if (
 			header("Location: customer_signup.php?error=The email is taken try another&$user_data");
 			exit();
 		}
-		$sql = "SELECT * FROM users WHERE phone='$phone' ";
+		$sql = "SELECT * FROM Customers WHERE phone='$phone' ";
 		$result = mysqli_query($conn, $sql);
 
 		if (mysqli_num_rows($result) > 0) {
@@ -74,7 +74,7 @@ if (
 			exit();
 		}
 
-		$sql2 = "INSERT INTO users(username, password, email, phone, city, address) VALUES('$uname', '$pass', '$email','$phone','$city','$address')";
+		$sql2 = "INSERT INTO Customers (username, password, email, phone, city, address) VALUES ('$uname', '$pass', '$email','$phone','$city','$address')";
 
 		$result2 = mysqli_query($conn, $sql2);
 		if ($result2) {

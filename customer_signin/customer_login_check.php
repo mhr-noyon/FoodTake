@@ -16,17 +16,17 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 	$pass = validate($_POST['password']);
 
 	if (empty($uname)) {
-		header("Location: home_page.php?error=User Name is required");
+		header("Location: /FoodTake/home_page.php?error=User Name is required");
 		exit();
 	} else if (empty($pass)) {
-		header("Location: home_page.php?error=Password is required");
+		header("Location: /FoodTake/home_page.php?error=Password is required");
 		exit();
 	} else {
 		// hashing the password
 		$pass = md5($pass);
 
 
-		$sql = "SELECT * FROM users WHERE username='$uname' AND password='$pass'";
+		$sql = "SELECT * FROM Customers WHERE username='$uname' AND password='$pass'";
 
 		$result = mysqli_query($conn, $sql);
 
@@ -36,7 +36,7 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 				$_SESSION['customer_username'] = $row['username'];
 				$_SESSION['customer_email'] = $row['email'];
 				$_SESSION['customer_phone'] = $row['phone'];
-				header("Location: logged.php");
+				header("Location: /FoodTake/home_page.php");
 				exit();
 			} else {
 				header("Location: customer-login.php?error=Incorect User name or password");

@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +10,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
      <title>Home Page</title>
      <!-- Custom CSS -->
-     <link rel="stylesheet" href="./css/landingPage.css" />
+     <link rel="stylesheet" href="/FoodTake/css/landingPage.css" />
      <!-- Bootstap linking -->
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -45,16 +49,13 @@
                     </div>
                </div>
           </div>
-          <div class="food-container">
-               <div class="food-list" id="foodList">
-               </div>
-          </div>
+          <?php include 'show-food.php'; ?>
      </div>
 
      <?php include 'footer.php'; ?>
 
 
-     <script src="./javascript/home_page.js"></script>
+     <script src="/FoodTake/javascript/home_page.js"></script>
      <script src="./javascript/show-food.js"></script>
      <script src="./javascript/search-food.js"></script>
 </body>

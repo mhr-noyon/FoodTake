@@ -1,0 +1,78 @@
+-- Customers Table
+CREATE TABLE Customers (
+    customer_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    phone VARCHAR(15) NOT NULL UNIQUE,
+    city VARCHAR(50) NOT NULL,
+    address TEXT NOT NULL,
+    total_spent DECIMAL(10, 2) DEFAULT 0,   
+    discount_percentage DECIMAL(5, 2) DEFAULT 0
+);
+
+-- Admins Table
+CREATE TABLE Admins (
+    admin_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE
+);
+
+-- DeliveryBoys Table
+CREATE TABLE DeliveryBoys (
+    delivery_boy_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    phone VARCHAR(15) NOT NULL UNIQUE,
+    city VARCHAR(50) NOT NULL,
+    address TEXT NOT NULL,    
+    deliveries_count INT DEFAULT 0,
+    bonus_amount DECIMAL(10, 2) DEFAULT 0,
+    active BOOLEAN DEFAULT TRUE
+);
+
+-- Foods Table
+CREATE TABLE Foods (
+    food_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    image TEXT,
+    description TEXT,
+    price DECIMAL(10, 2) NOT NULL,
+    available BOOLEAN DEFAULT TRUE
+);
+
+-- Orders Table
+CREATE TABLE Orders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT,
+    order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    food_id INT,
+    quantity INT,
+    total_amount DECIMAL(10, 2),
+    status ENUM('pending', 'assigned', 'delivered', 'canceled') DEFAULT 'pending',
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id) ON DELETE SET NULL
+);
+
+-- Cart Table
+CREATE TABLE Cart (
+    cart_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT,
+    food_id INT,
+    quantity INT,
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id) ON DELETE SET NULL,
+    FOREIGN KEY (food_id) REFERENCES Foods(food_id) ON DELETE SET NULL
+);
+
+-- Deliveries Table
+CREATE TABLE Deliveries (
+    delivery_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    delivery_boy_id INT,
+    assigned_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    delivered_date DATETIME,
+    status ENUM('pending', 'delivered') DEFAULT 'pending',
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE RESTRICT,
+    FOREIGN KEY (delivery_boy_id) REFERENCES DeliveryBoys(delivery_boy_id) ON DELETE SET NULL
+);
