@@ -12,8 +12,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+if (isset($_GET['username'])) {
+    $id = $_GET['username'];
     $sql = "SELECT id, name, email, birth FROM student_details WHERE id = $id";
     $result = $conn->query($sql);
 

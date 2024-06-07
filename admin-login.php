@@ -39,7 +39,7 @@
      <?php include 'footer.php'; ?>
 
 
-     <script src="./javascript/home-page.js"></script>
+     <script src="./javascript/home_page.js"></script>
      <script src="./javascript/show-food.js"></script>
 </body>
 

@@ -23,10 +23,10 @@
      <div class="main bg-image">
           <div class="login-form">
                <h3 class="text-center text-decoration-underline">Customer Login</h3>
-               <form action="admin-login.php" method="POST">
+               <form action="customer_login_check.php" method="POST">
                     <div class="mb-3">
-                         <label for="username" class="form-label">Username</label>
-                         <input type="text" class="form-control" id="username" name="username" required>
+                         <label for="uname" class="form-label">Username</label>
+                         <input type="text" class="form-control" id="username" name="uname" required>
                     </div>
                     <div class="mb-3">
                          <label for="password" class="form-label">Password</label>
@@ -35,7 +35,7 @@
                     <button type="submit" class="btn btn-primary">Login</button>
                     <div class="go-signup">
                          <p>Don't have an account?</p>
-                         <a href="customer-signup.php">Sign-Up</a>
+                         <a href="customer_signup.php">Sign-Up</a>
                     </div>
                </form>
           </div>
@@ -49,7 +49,7 @@
      <?php include 'footer.php'; ?>
 
 
-     <script src="./javascript/home-page.js"></script>
+     <script src="./javascript/home_page.js"></script>
      <script src="./javascript/show-food.js"></script>
 </body>
 

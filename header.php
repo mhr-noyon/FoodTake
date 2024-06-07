@@ -24,7 +24,7 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                          <ul class="navbar-nav">
-                              <li class="nav-item"><a class="nav-link active" aria-current="page" href="./home-page.php">Home</a></li>
+                              <li class="nav-item"><a class="nav-link active" aria-current="page" href="./home_page.php">Home</a></li>
                               <li class="nav-item"><a class="nav-link" href="#">About</a></li>
                               <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                               <li class="nav-item" id="loginButton"><a class="nav-link" href="#">Login</a></li>
