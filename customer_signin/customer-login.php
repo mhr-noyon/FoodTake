@@ -56,6 +56,7 @@
 
      <script src="../javascript/home_page.js"></script>
      <script src="../javascript/show-food.js"></script>
+     <script src="/FoodTake/javascript/show_own_api_food.js"></script>
 </body>
 
 </html>

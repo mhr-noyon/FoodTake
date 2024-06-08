@@ -32,17 +32,17 @@
   color: white;
 }
 .go-signup {
-     margin-top: 10px;
-     display: flex;
-     position: relative;
+  margin-top: 10px;
+  display: flex;
+  position: relative;
 }
 .go-signup a {
-     margin-left: 10px;
-     color: #002e72;
-     position: absolute;
-     right: 0;
-     text-decoration: none;
+  margin-left: 10px;
+  color: #002e72;
+  position: absolute;
+  right: 0;
+  text-decoration: none;
 }
 .go-signup a:hover {
-     text-decoration: underline;
+  text-decoration: underline;
 }

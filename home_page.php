@@ -11,6 +11,7 @@ session_start();
      <title>Home Page</title>
      <!-- Custom CSS -->
      <link rel="stylesheet" href="/FoodTake/css/landingPage.css" />
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
      <!-- Bootstap linking -->
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -58,6 +59,8 @@ session_start();
      <script src="/FoodTake/javascript/home_page.js"></script>
      <script src="./javascript/show-food.js"></script>
      <script src="./javascript/search-food.js"></script>
+     <script src="/FoodTake/javascript/show_own_api_food.js"></script>
+     <script src="/FoodTake/javascript/add_to_cart.js"></script>
 </body>
 
 </html>

@@ -1,91 +1,85 @@
-//  From database to the front end
-// const cardData = [
-//   { name: "Food 1", content: "Content for Food 1", no: 1 },
-//   { name: "Food 2", content: "Content for Food 2", no: 2 },
-//   { name: "Food 3", content: "Content for Food 3", no: 3 },
-//   { name: "Food 4", content: "Content for Food 4", no: 4 },
-//   { name: "Food 5", content: "Content for Food 5", no: 5 },
-// ];
+// document.addEventListener("DOMContentLoaded", async function () {
+//   const foodList = document.getElementById("foodList");
+//   const waitingText = document.getElementById("waiting_for_food");
+//   let mealCount = 16;
+//   const mealPromises = [];
 
-// // Get the grid container
-// const gridContainer = document.getElementById("gridContainer");
+//   const fetchRandomMeal = () =>
+//     fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+//       .then((response) => response.json())
+//       .then((data) => data.meals[0]);
 
-// // Loop through the card data and generate HTML for each card
-// for (let i = 0; i < cardData.length; i++) {
-//   const card = cardData[i];
+//   // Create an array of promises for 16 random meals
+//   for (let i = 0; i < mealCount; i++) {
+//     mealPromises.push(fetchRandomMeal());
+//   }
 
-//   // Create card element
-//   const cardElement = document.createElement("div");
-//   cardElement.classList.add("food");
+//   // Wait for all promises to resolve
+//   const meals = await Promise.all(mealPromises);
 
-//   // Create card content
-//   const cardContent = `
-//           <img src="https://source.unsplash.com/200x200/?food" alt="food" />
-//           <h3 class="food-name">${card.name}</h3>
-//           <p class="food-desc">${card.content}</p>
-//           <button class="btn  btn-outline-info btn-${card.no}">Order Now</button>
-//      `;
+//   waitingText.style.display = "none";
+//   // Process and display each meal
+//   meals.forEach((meal) => {
+//     // Truncate the instructions to the first 100 characters
+//     const truncatedInstructions =
+//       meal.strInstructions.length > 60
+//         ? meal.strInstructions.substring(0, 60) + "..."
+//         : meal.strInstructions;
 
-//   // Set card content
-//   cardElement.innerHTML = cardContent;
+//     // Create food element
+//     const foodElement = document.createElement("div");
+//     foodElement.classList.add("food");
+//     let price = Math.floor(Math.random() * 1000);
+//     // Create HTML content for the food element
+//     const foodHTML = `
+//           <div class="food-image">
+//                 <img src="${meal.strMealThumb}" class="card-img-top" alt="${meal.strMeal}" />
+//           </div>
+//           <div class="food-content">
+//               <h2 class="food-title">${meal.strMeal}</h2>
+//               <p class="food-description">${meal.strInstructions}
+//                  <a href="#">See more</a>
+//               </p>
+//               <div class="food-footer">
+//                 <span>Price: ${price}TK</span>
+//                 <button class="food-button btn btn-outline-info order-button">Add To Cart</button>
+//               </div>
+//           </div>
+//       `;
 
-//   // Append card to grid container
-//   gridContainer.appendChild(cardElement);
-// }
-// console.log("done");
+//     // Set HTML content for the food element
+//     foodElement.innerHTML = foodHTML;
 
-document.addEventListener("DOMContentLoaded", async function () {
-  const foodList = document.getElementById("foodList");
-  const waitingText = document.getElementById("waiting_for_food");
-  let mealCount = 16;
-  const mealPromises = [];
+//     // Append food element to the food list
+//     foodList.appendChild(foodElement);
 
-  // Function to fetch a random meal
-  const fetchRandomMeal = () =>
-    fetch("https://www.themealdb.com/api/json/v1/1/random.php")
-      .then((response) => response.json())
-      .then((data) => data.meals[0]);
+//     // Add event listener to the "Order Now" button
+//     const orderButton = foodElement.querySelector(".order-button");
+//     orderButton.addEventListener("click", () => {
+//       alert(`You clicked on: ${meal.strMeal}`);
+//       console.log("Meal clicked:", meal);
 
-  // Create an array of promises for 16 random meals
-  for (let i = 0; i < mealCount; i++) {
-    mealPromises.push(fetchRandomMeal());
-  }
-
-  // Wait for all promises to resolve
-  const meals = await Promise.all(mealPromises);
-
-  // Process and display each meal
-  waitingText.style.display = "none";
-  meals.forEach((meal) => {
-    // Truncate the instructions to the first 100 characters
-    const truncatedInstructions =
-      meal.strInstructions.length > 100
-        ? meal.strInstructions.substring(0, 100) + "..."
-        : meal.strInstructions;
-
-    // Create food element
-    const foodElement = document.createElement("div");
-    foodElement.classList.add("food");
-
-    // Create HTML content for the food element
-    const foodHTML = `
-          <img src="${meal.strMealThumb}" class="card-img-top" alt="${meal.strMeal}" />
-              <h5 class="food-name">${meal.strMeal}</h5>
-              <p class="food-desc">${meal.strInstructions}</p>
-              <button class="btn btn-outline-info order-button">Order Now</button>
-      `;
-
-    // Set HTML content for the food element
-    foodElement.innerHTML = foodHTML;
-
-    // Append food element to the food list
-    foodList.appendChild(foodElement);
-
-    // Add event listener to the "Order Now" button
-    const orderButton = foodElement.querySelector(".order-button");
-    orderButton.addEventListener("click", () => {
-      alert(`You clicked on: ${meal.strMeal}`);
-      console.log("Meal clicked:", meal);
-    });
-  });
-});
+//       // Send meal data to the server
+//       fetch("./customer_signin/add_to_cart.php", {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({
+//           id: meal.idMeal,
+//           name: meal.strMeal,
+//           price: price,
+//           description: meal.strInstructions,
+//           image: meal.strMealThumb,
+//         }),
+//       })
+//         .then((response) => response.json())
+//         .then((data) => {
+//           console.log("Success:", data);
+//         })
+//         .catch((error) => {
+//           console.error("Error:", error);
+//         });
+//     });
+//   });
+// });

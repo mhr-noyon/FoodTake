@@ -36,6 +36,7 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 				$_SESSION['customer_username'] = $row['username'];
 				$_SESSION['customer_email'] = $row['email'];
 				$_SESSION['customer_phone'] = $row['phone'];
+				$_SESSION['customer_user_id'] =  $row['customer_id'];
 				header("Location: /FoodTake/home_page.php");
 				exit();
 			} else {

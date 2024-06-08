@@ -145,15 +145,23 @@ h6 {
   grid-gap: 4%;
   box-sizing: border-box;
 }
-
 .food-list .food {
   height: fit-content;
+  /* max-height: 100%; */
   text-align: center;
-  margin: 20px;
+  margin: 2%;
   padding: 20px;
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+  cursor: pointer;
+}
+.food:hover {
+  transform: translateY(-10px);
+  background-color: #fdfded;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
 }
 .food .card-img-top {
   width: 100%;
@@ -161,44 +169,57 @@ h6 {
   object-fit: cover;
   border-radius: 10px;
 }
-.food .food-name {
+.food .food-title {
   font-size: 20px;
   font-weight: bold;
   height: 50px;
+  margin-top: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
-.food .food-desc {
+.food .food-description {
   font-size: 13px;
   height: 100px; /* Set the fixed height */
   overflow: hidden; /* Hide overflow text */
   text-overflow: ellipsis; /* Add ellipsis at the end */
   display: -webkit-box; /* Use webkit box model */
-  -webkit-line-clamp: 5; /* Limit to 4 lines */
+  -webkit-line-clamp: 4; /* Limit to 4 lines */
   -webkit-box-orient: vertical; /* Vertical orientation for the box */
 }
-.food-list .food .btn {
-  width: 80%;
+.food-list .food .food-footer {
+  display: flex;
+  justify-content: space-between;
 }
+.food-list .food .food-footer p {
+  font-size: 20px;
+}
+.food-list .food .food-footer .btn {
+  width: 50%;
+}
+
 /* For samll PC screen */
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1500px) {
   .food-list {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .food-list .food {
+    margin: 3% !important;
+    padding: 20px !important;
   }
 }
 
 /* For tablet screen */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 900px) {
   .food-list {
     grid-template-columns: repeat(2, 1fr);
     /* grid-gap: 10px !important; */
   }
   .food-list .food {
-    margin: 10px !important;
-    padding: 10px !important;
+    margin: 2% !important;
+    padding: 15px !important;
   }
 }
 
