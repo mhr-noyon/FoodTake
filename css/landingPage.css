@@ -50,6 +50,8 @@ h6 {
   background-color: rgb(236, 236, 236) !important;
 }
 .main {
+  /* background-color: #93d7ff;
+  z-index: 1 !important; */
   min-height: 100vh;
   margin: 0;
 }
@@ -249,4 +251,26 @@ h6 {
   border-radius: 5px;
   margin: 20px auto;
   opacity: 0.8;
+}
+
+/* Card details page */
+.cart-box{
+  margin-top: 50px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+}
+.quantity-div{
+  width: 80px !important;
+  color: rgb(105, 78, 255);
+}
+.cart-caption{
+  font-size: 30px;
+  font-weight: bold;
+  text-align:center;
+}
+.cart-food-img{
+  width: 80px;
 }

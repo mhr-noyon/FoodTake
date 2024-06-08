@@ -89,3 +89,6 @@ if (
 	header("Location: customer_signup.php");
 	exit();
 }
+
+// Close connection
+$conn->close();

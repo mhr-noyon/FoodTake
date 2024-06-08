@@ -52,3 +52,6 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 	header("Location: customer-login.php");
 	exit();
 }
+
+// Close connection
+$conn->close();

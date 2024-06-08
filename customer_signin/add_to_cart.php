@@ -39,3 +39,5 @@ if (isset($_POST['id']) && isset($_POST['name']) && isset($_POST['price']) && is
 } else {
      echo "You are not LOGGED IN!";
 }
+// Close connection
+$conn->close();
