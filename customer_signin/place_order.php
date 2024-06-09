@@ -3,6 +3,13 @@ session_start();
 echo $_SESSION['customer_user_id'];
 if (!isset($_SESSION['customer_user_id'])) {
      header('location:./customer-login.php');
+} else if ($_SESSION['count'] == 0) {
+     echo "Cart is empty:
+     <script>
+          alert('Cart is empty');
+          window.location.href = '/FoodTake/customer_signin/cart_page.php';
+     </script>
+     ";
 } else
 ?>
 <!DOCTYPE html>
@@ -34,28 +41,30 @@ if (!isset($_SESSION['customer_user_id'])) {
      </div> -->
      <!-- Main Body -->
 
+     <!-- <div class="main bg-image"> -->
      <div class="main bg-image">
           <!-- Bill details -->
-          <div class="container bill-container">
-               <div class="row  cart-box">
+          <div class="container ">
+               <div class="row bill-container   cart-box">
                     <div class="col-lg-6">
-                         <div class="bill-details">
-                              <h3>Bill Details</h3>
-                              <div class="mb-3">
-                                   <label for="uname" class="form-label">Username</label>
-                                   <input type="text" class="form-control" id="username" name="uname" value="<?php echo $_SESSION['customer_username']; ?>" required disabled>
-                              </div>
-                              <div class="mb-3">
-                                   <label for="address" class="form-label">Address</label>
-                                   <input type="text" class="form-control" id="address" name="address" required>
-                              </div>
-                              <div class="mb-3">
-                                   <label for="phone" class="form-label">Phone</label>
-                                   <input type="text" class="form-control" id="phone" name="phone" required>
-                              </div>
-                              <div class="mb-3">
-                                   <label for="total" class="form-label">Total</label>
-                                   <input type="text" class="form-control" id="total-price" name="total" required value="
+                         <form action="/FoodTake/customer_signin/order_record.php" method="post">
+                              <div class="bill-details">
+                                   <h3>Bill Details</h3>
+                                   <div class="mb-3">
+                                        <label for="uname" class="form-label">Username</label>
+                                        <input type="text" class="form-control" id="username" name="uname" value="<?php echo $_SESSION['customer_username']; ?>" required disabled>
+                                   </div>
+                                   <div class="mb-3">
+                                        <label for="address" class="form-label">Address</label>
+                                        <input type="text" class="form-control" id="address" name="address" required>
+                                   </div>
+                                   <div class="mb-3">
+                                        <label for="phone" class="form-label">Phone</label>
+                                        <input type="text" class="form-control" id="phone" name="phone" required>
+                                   </div>
+                                   <div class="mb-3">
+                                        <label for="total" class="form-label">Total</label>
+                                        <input type="text" class="form-control" id="total-price" name="total" required value="
                                    <?php
                                    include "db_conn.php";
                                    $user_id = $_SESSION['customer_user_id'];
@@ -71,16 +80,21 @@ if (!isset($_SESSION['customer_user_id'])) {
                                    $conn->close();
                                    ?>
                                    " disabled>
+                                   </div>
+                                   <div class="mb-3">
+                                        <label for="payment" class="form-label">Payment Method</label>
+                                        <select class="form-select" id="payment" name="payment" required>
+                                             <option value="cash">Cash</option>
+                                             <option value="card">Bkash</option>
+                                        </select>
+                                   </div>
                               </div>
-                              <div class="mb-3">
-                                   <label for="payment" class="form-label">Payment Method</label>
-                                   <select class="form-select" id="payment" name="payment" required>
-                                        <option value="cash">Cash</option>
-                                        <option value="card">Bkash</option>
-                                   </select>
-                              </div>
-                         </div>
-                         <button type="submit" class="btn btn-primary" onclick="order_now()">Place Order</button>
+                              <button type="submit" class="btn btn-primary">Confirm Order</button>
+                         </form>
+                    </div>
+
+                    <div class="col-lg-6">
+                         <img src="/FoodTake/images/eating.png" id="eating" alt="">
                     </div>
                </div>
           </div>

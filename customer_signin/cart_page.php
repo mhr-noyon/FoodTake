@@ -77,7 +77,8 @@ if (!isset($_SESSION['customer_user_id'])) {
                     ?>
                          <div class="d-flex justify-content-end" id="close_div">
                               <!-- <button class="btn btn-primary" onclick="placeOrder()">Place Order</button> -->
-                              <form action="/FoodTake/customer_signin/order_record.php" method="post">
+                              <form action="/FoodTake/customer_signin/place_order.php" method="post">
+                                   <!-- <form action="/FoodTake/customer_signin/order_record.php" method="post"> -->
                                    <button type="submit" class="btn btn-primary" onclick="placeOrder()">Place Order</button>
                               </form>
                          </div>

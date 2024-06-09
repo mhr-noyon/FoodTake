@@ -31,7 +31,7 @@
                               if (isset($_SESSION['customer_username']) || isset($_SESSION['admin_username']) || isset($_SESSION['admin_username'])) {
                               ?>
                                    <li class="nav-item"><a class="nav-link" href="/FoodTake/customer_signin/cart_page.php">Cart</a></li>
-                                   <li class="nav-item"><a class="nav-link" href="/FoodTake/order_progress.php">Orders</a></li>
+                                   <li class="nav-item"><a class="nav-link" href="/FoodTake/customer_signin/orders_show.php">Orders</a></li>
                                    <li class="nav-item"><a class="nav-link" href="/FoodTake/customer_signin/customer_logout.php">Logout</a></li>
                               <?php
                               } else {
@@ -58,7 +58,7 @@
                <img src="/FoodTake/images/login.png" class="security-image" alt="login">
                <button class="btn btn-info mb-3" onclick="goToAdminLoginPage('/FoodTake/customer_signin/customer-login.php')">Customer Login</button>
                <button class="btn btn-info mb-3" onclick="goToAdminLoginPage('/FoodTake/delivery-boy-login.php')">Delivery Boy Login</button>
-               <button class="btn btn-info" onclick="goToAdminLoginPage('/FoodTake/admin-login.php')">Admin Login</button>
+               <button class="btn btn-info" onclick="goToAdminLoginPage('/FoodTake/admin/admin_login.php')">Admin Login</button>
           </div>
      </div>
      <!-- <script src="/FoodTake/javascript/search-food.js"></script> -->

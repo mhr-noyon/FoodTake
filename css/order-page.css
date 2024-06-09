@@ -9,12 +9,25 @@
   opacity: 1 !important;
 }
 .bg-image{
-  opacity: .5 !important;
+  background-color: rgb(67, 253, 253,0.5);
+}
+#eating{
+  width: 450px;
+  /* height: 350px; */
+  overflow: hidden;
+  margin: 0 auto;
+  margin-left: 20px;
+  opacity: 0.8;
 }
 .bill-container {
   background-color: rgba(0, 0, 0, 0.8);
   /* color: #000; */
   border-radius: 15px;
+  padding: 40px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 .login-form .btn {
   width: 100%;

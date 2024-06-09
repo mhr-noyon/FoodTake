@@ -64,7 +64,17 @@ if (!isset($_SESSION['customer_user_id'])) {
                               if (isset($_SESSION['customer_username'])) {
                                    $user_id = $_SESSION['customer_user_id'];
                                    $uname = $_SESSION['customer_username'];
-                                   $sql = "SELECT * FROM orders WHERE customer_id='$user_id'";
+                                   $sql = "SELECT food_id, food_name,quantity,total_amount, image,status,  CONCAT(
+                                        DAY(order_date),
+                                        CASE
+                                             WHEN DAY(order_date) IN (1, 21, 31) THEN 'st'
+                                             WHEN DAY(order_date) IN (2, 22) THEN 'nd'
+                                             WHEN DAY(order_date) IN (3, 23) THEN 'rd'
+                                             ELSE 'th'
+                                        END,
+                                        ' ',
+                                        DATE_FORMAT(order_date, '%M,%Y, %H:%i:%s')
+                                   ) AS order_date FROM orders WHERE customer_id='$user_id' ORDER BY order_date DESC";
 
                                    $result = mysqli_query($conn, $sql);
                                    if (mysqli_num_rows($result) > 0) {
@@ -74,8 +84,8 @@ if (!isset($_SESSION['customer_user_id'])) {
                <td> <img src="' . $row["image"] . '" alt="Food Image"  class="cart-food-img"> </td><td>' . $row["food_name"] . '</td>
                <span class="item-id" id="item-id" style="display:none">' . $row["food_id"] . '</span> 
                <td>
-                    '. $row["quantity"] . '</td>
-               <td><span class="item-total-price" id="item-total-price">' . $row["total_amount"] . '</span></td> <td>'.$row["order_date"].'</td>' . '<td>'.$row["status"].'</td>'.
+                    ' . $row["quantity"] . '</td>
+               <td><span class="item-total-price" id="item-total-price">' . $row["total_amount"] . '</span></td> <td>' . $row["order_date"] . '</td>' . '<td>' . $row["status"] . '</td>' .
                                                   '<td><button class="btn btn-danger" onclick="cancelFood(this)">Cancel</button></td>';
 
                                              echo "</tr>";
