@@ -22,9 +22,8 @@ if (isset($_POST['id']) && isset($_SESSION['customer_user_id'])) {
      $sql = "DELETE FROM cart WHERE customer_id='$user_id' AND food_id	='$food_id'";
 
      if (mysqli_query($conn, $sql)) {
-          echo "Record deleted successfully";
           $_SESSION['count'] -= 1;
-          echo $_SESSION['count'] . " items in the cart";
+          echo $_SESSION['count'] . "|Record deleted successfully";
      } else {
           echo "Error deleting record: " . mysqli_error($conn);
      }

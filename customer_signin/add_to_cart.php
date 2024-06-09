@@ -37,7 +37,7 @@ if (isset($_POST['id']) && isset($_POST['name']) && isset($_POST['price']) && is
           echo "Data already exists!";
      }
 } else {
-     echo "You are not LOGGED IN!";
+     echo "Error: You are not LOGGED IN!<br>";
 }
 // Close connection
 $conn->close();

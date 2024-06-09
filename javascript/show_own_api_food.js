@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <p class="food-description">${meal.description}
                  <a href="#">See more</a>
               </p>
+
               <div class="food-footer">
                 <span>Price: ${meal.price}TK</span>
                 <button class="food-button btn btn-outline-info order-button" onclick="add_to_cart(this)">Add To Cart</button>
@@ -44,9 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
         foodElement.innerHTML = foodHTML;
         foodList.appendChild(foodElement);
         count++;
-        foodElement.addEventListener("click", () => {
-          alert(`You clicked on: ${meal.name}`);
-        });
+        // foodElement.addEventListener("click", () => {
+        //   alert(`You clicked on: ${meal.name}`);
+        // });
       }
     }
   };

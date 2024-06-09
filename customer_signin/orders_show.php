@@ -22,6 +22,7 @@ if (!isset($_SESSION['customer_user_id'])) {
      <!-- Bootstap linking -->
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 
 <body id="up">
@@ -31,16 +32,17 @@ if (!isset($_SESSION['customer_user_id'])) {
           <div class="container">
                <!-- Card items details -->
                <div class="cart-box">
-                    <h1 class="cart-caption">Cart Details</h1>
+                    <h1 class="cart-caption">Orders Details</h1>
                     <table class="table">
                          <thead>
                               <tr>
                                    <img src="" alt="">
                                    <th scope="col"></th>
                                    <th scope="col">Food Name</th>
-                                   <th scope="col">Price</th>
                                    <th scope="col">Quantity</th>
-                                   <th scope="col">Total</th>
+                                   <th scope="col">Total_Amount</th>
+                                   <th scope="col">Order Time</th>
+                                   <th scope="col">Progress</th>
                                    <th scope="col">Action</th>
                               </tr>
                          </thead>
@@ -56,7 +58,40 @@ if (!isset($_SESSION['customer_user_id'])) {
                                    <td><span class="item-total-price" id="item-total-price">0</span></td>'.
                                    '<td><button class="btn btn-danger" onclick="removeFood(this)"></button></td>
                               </tr> -->
-                              <?php include 'cart_details.php';
+                              <?php
+                              include "db_conn.php";
+                              $_SESSION['count'] = 0;
+                              if (isset($_SESSION['customer_username'])) {
+                                   $user_id = $_SESSION['customer_user_id'];
+                                   $uname = $_SESSION['customer_username'];
+                                   $sql = "SELECT * FROM orders WHERE customer_id='$user_id'";
+
+                                   $result = mysqli_query($conn, $sql);
+                                   if (mysqli_num_rows($result) > 0) {
+                                        $_SESSION['totalPrice'] = 0;
+                                        while ($row = $result->fetch_assoc()) {
+                                             echo '<tr class="cartItems" data-id="' . $row["food_id"] . '" data-name="' . $row["food_name"] . '" data-image="' . $row["image"] . '" data-status="' . $row["status"] . '">
+               <td> <img src="' . $row["image"] . '" alt="Food Image"  class="cart-food-img"> </td><td>' . $row["food_name"] . '</td>
+               <span class="item-id" id="item-id" style="display:none">' . $row["food_id"] . '</span> 
+               <td>
+                    '. $row["quantity"] . '</td>
+               <td><span class="item-total-price" id="item-total-price">' . $row["total_amount"] . '</span></td> <td>'.$row["order_date"].'</td>' . '<td>'.$row["status"].'</td>'.
+                                                  '<td><button class="btn btn-danger" onclick="cancelFood(this)">Cancel</button></td>';
+
+                                             echo "</tr>";
+                                        }
+                                   } else {
+                              ?>
+                                        <tr>
+                                             <td colspan="6" style="text-align: center;">No items in the cart</td>
+                                        </tr>
+                              <?php
+                                   }
+                              } else {
+                                   header("Location: customer-login.php");
+                              }
+
+                              $conn->close();
                               ?>
                          </tbody>
                          <tfoot>
@@ -71,19 +106,6 @@ if (!isset($_SESSION['customer_user_id'])) {
                               <?php } ?>
                          </tfoot>
                     </table>
-                    <?php
-                    // echo $_SESSION['count'];
-                    if ($_SESSION['count'] > 0) {
-                    ?>
-                         <div class="d-flex justify-content-end" id="close_div">
-                              <!-- <button class="btn btn-primary" onclick="placeOrder()">Place Order</button> -->
-                              <form action="/FoodTake/customer_signin/order_record.php" method="post">
-                                   <button type="submit" class="btn btn-primary" onclick="placeOrder()">Place Order</button>
-                              </form>
-                         </div>
-                    <?php
-                    }
-                    ?>
                </div>
 
           </div>
