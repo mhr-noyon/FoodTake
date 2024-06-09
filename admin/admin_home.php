@@ -46,10 +46,10 @@ echo  $_SESSION['admin_username'];
                <h3 class="text-center text-decoration-underline">Admin Panel</h3>
                <form action="admin_login_check.php" method="POST">
                     <div class="mb-3">
-                         <a href="#.php" class="btn btn-primary">Orders</a>
+                         <a href="./order_management.php" class="btn btn-primary">Orders</a>
                     </div>
                     <div class="mb-3">
-                         <a href="#.php" class="btn btn-primary">Food management</a>
+                         <a href="food_management.php" class="btn btn-primary">Food management</a>
                     </div>
                     <div class="mb-3">
 

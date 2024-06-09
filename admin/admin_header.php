@@ -1,5 +1,4 @@
 <?php
-session_start();
 if (!isset($_SESSION['admin_username'])) {
      header("Location: /FoodTake/admin/admin_login.php");
      exit();
@@ -32,7 +31,7 @@ if (!isset($_SESSION['admin_username'])) {
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                          <ul class="navbar-nav">
-                              <li class="nav-item"><a class="nav-link active home" id="home" aria-current="page" href="/FoodTake/home_page.php">Panel</a></li>
+                              <li class="nav-item"><a class="nav-link active home" id="home" aria-current="page" href="/FoodTake/admin/admin_home.php">Panel</a></li>
                               <li class="nav-item"><a class="nav-link" href="#">Orders</a></li>
                               <li class="nav-item"><a class="nav-link" href="#">Staff</a></li>
                               <li class="nav-item"><a class="nav-link" href="#">Meal</a></li>

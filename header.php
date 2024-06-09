@@ -28,7 +28,7 @@
                               <li class="nav-item"><a class="nav-link" href="#">About</a></li>
                               <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                               <?php
-                              if (isset($_SESSION['customer_username']) || isset($_SESSION['admin_username']) || isset($_SESSION['admin_username'])) {
+                              if (isset($_SESSION['customer_username'])) {
                               ?>
                                    <li class="nav-item"><a class="nav-link" href="/FoodTake/customer_signin/cart_page.php">Cart</a></li>
                                    <li class="nav-item"><a class="nav-link" href="/FoodTake/customer_signin/orders_show.php">Orders</a></li>

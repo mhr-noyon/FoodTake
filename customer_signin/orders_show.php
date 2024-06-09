@@ -33,7 +33,7 @@ if (!isset($_SESSION['customer_user_id'])) {
                <!-- Card items details -->
                <div class="cart-box">
                     <h1 class="cart-caption">Orders Details</h1>
-                    <table class="table">
+                    <table class="table table-hover">
                          <thead>
                               <tr>
                                    <img src="" alt="">
