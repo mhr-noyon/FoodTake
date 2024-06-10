@@ -79,7 +79,7 @@ if (!isset($_SESSION['customer_user_id'])) {
                                    echo $totalPrice;
                                    $conn->close();
                                    ?>
-                                   " disabled>
+                                   " disabled style="text-align: center;">
                                    </div>
                                    <div class="mb-3">
                                         <label for="payment" class="form-label">Payment Method</label>

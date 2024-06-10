@@ -15,11 +15,6 @@ function add_delivery_boy(btn) {
       console.log(response);
       if (response.includes("successfully")) {
         window.location.href = "/FoodTake/admin/order_management.php";
-        //       alert("Please Sign in first to add items to cart");
-        //     } else if (response.includes("stored successfully")) {
-        //       alert(` ${name} -> Added to cart successfully`);
-        //     } else if (response.includes("already exists")) {
-        //       alert(` ${name} Already in cart`);
       } else {
         alert("Something went wrong");
       }

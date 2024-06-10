@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION['lim'])) {
+     $_SESSION['lim'] = 0;
+}
 if (!isset($_SESSION['admin_username'])) {
      echo "
      <script>
@@ -12,7 +15,6 @@ if (!isset($_SESSION['admin_username'])) {
 } else
      echo "
      <script>
-          alert('You are logged in');
           </script>
           ";
 echo  $_SESSION['admin_username'];
@@ -41,7 +43,7 @@ echo  $_SESSION['admin_username'];
 <body>
      <?php include 'admin_header.php'; ?>
      <!-- Main Body -->
-     <div class="main">
+     <div class="main main-panel">
           <div class="login-form">
                <h3 class="text-center text-decoration-underline">Admin Panel</h3>
                <form action="admin_login_check.php" method="POST">
@@ -53,7 +55,7 @@ echo  $_SESSION['admin_username'];
                     </div>
                     <div class="mb-3">
 
-                         <a href="#.php" class="btn btn-primary">Staff</a>
+                         <a href="show_staff.php" class="btn btn-primary">Staff</a>
                     </div>
                     <div class="mb-3">
 

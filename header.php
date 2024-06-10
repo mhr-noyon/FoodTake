@@ -23,20 +23,20 @@
                     <a class="navbar-brand" href="#up">FoodTake</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarNav">
-                         <ul class="navbar-nav">
-                              <li class="nav-item"><a class="nav-link active home" id="home" aria-current="page" href="/FoodTake/home_page.php">Home</a></li>
-                              <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                              <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                         <ul class="navbar-nav ">
+                              <li class="nav-item"><a class="nav-link active home" id="home" aria-current="page" href="/FoodTake/home_page.php" onclick="changeActive(this)">Home</a></li>
+                              <li class="nav-item"><a class="nav-link" href="#" onclick="changeActive(this)">About</a></li>
+                              <li class="nav-item"><a class="nav-link" href="#" onclick="changeActive(this)">Contact</a></li>
                               <?php
                               if (isset($_SESSION['customer_username'])) {
                               ?>
-                                   <li class="nav-item"><a class="nav-link" href="/FoodTake/customer_signin/cart_page.php">Cart</a></li>
-                                   <li class="nav-item"><a class="nav-link" href="/FoodTake/customer_signin/orders_show.php">Orders</a></li>
-                                   <li class="nav-item"><a class="nav-link" href="/FoodTake/customer_signin/customer_logout.php">Logout</a></li>
+                                   <li class="nav-item"><a class="nav-link" href="/FoodTake/customer_signin/cart_page.php" onclick="changeActive(this)">Cart</a></li>
+                                   <li class="nav-item"><a class="nav-link" href="/FoodTake/customer_signin/orders_show.php" onclick="changeActive(this)">Orders</a></li>
+                                   <li class="nav-item"><a class="nav-link" href="/FoodTake/customer_signin/customer_logout.php" onclick="logoutActive(this)">Logout</a></li>
                               <?php
                               } else {
                               ?>
-                                   <li class="nav-item" id="loginButton"><a class="nav-link" href="#">Login</a></li>
+                                   <li class="nav-item" id="loginButton"><a class="nav-link" href="#" onclick="changeActive(this)">Login</a></li>
                               <?php
                               }
                               ?>
@@ -57,11 +57,11 @@
                </button>
                <img src="/FoodTake/images/login.png" class="security-image" alt="login">
                <button class="btn btn-info mb-3" onclick="goToAdminLoginPage('/FoodTake/customer_signin/customer-login.php')">Customer Login</button>
-               <button class="btn btn-info mb-3" onclick="goToAdminLoginPage('/FoodTake/delivery-boy-login.php')">Delivery Boy Login</button>
+               <button class="btn btn-info mb-3" onclick="goToAdminLoginPage('/FoodTake/deliveryBoy/deliveryBoy-login.php')">Delivery Boy Login</button>
                <button class="btn btn-info" onclick="goToAdminLoginPage('/FoodTake/admin/admin_login.php')">Admin Login</button>
           </div>
      </div>
-     <!-- <script src="/FoodTake/javascript/search-food.js"></script> -->
+     <script src="/FoodTake/javascript/search-food.js"></script>
 </body>
 
 </html>

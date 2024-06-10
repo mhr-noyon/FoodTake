@@ -32,9 +32,9 @@ if (!isset($_SESSION['admin_username'])) {
                     <div class="collapse navbar-collapse" id="navbarNav">
                          <ul class="navbar-nav">
                               <li class="nav-item"><a class="nav-link active home" id="home" aria-current="page" href="/FoodTake/admin/admin_home.php">Panel</a></li>
-                              <li class="nav-item"><a class="nav-link" href="#">Orders</a></li>
-                              <li class="nav-item"><a class="nav-link" href="#">Staff</a></li>
-                              <li class="nav-item"><a class="nav-link" href="#">Meal</a></li>
+                              <li class="nav-item"><a class="nav-link" href="./order_management.php">Orders</a></li>
+                              <li class="nav-item"><a class="nav-link" href="show_staff.php">Staff</a></li>
+                              <li class="nav-item"><a class="nav-link" href="food_management.php">Meal</a></li>
                               <li class="nav-item"><a class="nav-link" href="/FoodTake/logout.php">Logout</a></li>
                          </ul>
                     </div>
@@ -50,6 +50,7 @@ if (!isset($_SESSION['admin_username'])) {
      <script src="/FoodTake/javascript/home_page.js"></script>
 
      <!-- <script src="/FoodTake/javascript/search-food.js"></script> -->
+     <script src="../javascript/home_page.js"></script>
 </body>
 
 </html>

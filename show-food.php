@@ -11,7 +11,8 @@
      <div class="food-container">
           <div id="waiting_for_food" class="mx-auto">Loading FOOD INFO..</div>
           <div class="food-list" id="foodList">
-               <div class="food" style="display: none;">
+               <input type="hidden" id="foodListLength" value="" />
+               <!-- <div class="food" style="display: none;">
                     <div class="food-image">
                          <img src="" class="card-img-top" alt="" />
                     </div>
@@ -25,8 +26,13 @@
                               <button class="food-button btn btn-outline-info order-button" id="" onclick="add_to_cart(this)"></button>
                          </div>
                     </div>
-               </div>
+               </div> -->
+
           </div>
+          <!-- <div class="text-center">
+
+               <button class="btn btn-primary" id="showMore" onclick="showMore()">Show More</button>
+          </div> -->
      </div>
      <!-- <script src="./javascript/add_to_cart.js"></script> -->
 </body>

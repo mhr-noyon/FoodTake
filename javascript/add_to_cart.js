@@ -79,17 +79,6 @@ function quantityChanged() {
       });
     });
 }
-// function quantityChanged() {
-//   console.log("Quantity changed");
-//   const quantityInputs = document.querySelectorAll(".quantity");
-
-//   quantityInputs.forEach((input) => {
-//     var parentDiv = input.closest(".cartItems");
-//     var id = parentDiv.data("id");
-//     var quantity = input.value;
-//     console.log(id, quantity);
-//
-// }
 function updateCart() {
   const totalPriceElement = document.getElementById("total-price");
 
@@ -116,34 +105,6 @@ document.addEventListener("DOMContentLoaded", function () {
     input.addEventListener("change", updateCart);
   });
 });
-// document.addEventListener("DOMContentLoaded", function () {
-//   console.log("DOM loaded");
-//   const quantityInputs = document.querySelectorAll(".quantity");
-//   // console.log(quantityInputs);
-//   const totalPriceElement = document.getElementById("total-price");
-
-//   quantityInputs.forEach((input) => {
-//     input.addEventListener("change", updateCart);
-//   });
-
-//   function updateCart() {
-//     let total = 0;
-//     console.log("Cart updated");
-
-//     document.querySelectorAll(".cartItems").forEach((item) => {
-//       console.log(item);
-//       const price = parseFloat(item.querySelector(".item-price").innerHTML);
-//       const quantity = parseInt(item.querySelector(".quantity").value);
-//       console.log(quantity,price);
-//       const itemTotal = price * quantity;
-//       item.querySelector(".item-total-price").textContent = `${itemTotal} TK`;
-
-//       total += itemTotal;
-//     });
-//     console.log(total);
-//     totalPriceElement.textContent = `${total} TK`;
-//   }
-// });
 
 function removeFood(btn) {
   console.log("clicked");
@@ -179,6 +140,35 @@ function removeFood(btn) {
       updateCart();
     },
     error: function (xhr, status, error) {
+      console.error(xhr.responseText);
+    },
+  });
+}
+function cancelFood(btn) {
+  console.log("Button clicked");
+  if (!confirm("Are you sure you want to cancel this order?")) {
+    return;
+  }
+  var parentDiv = $(btn).closest(".cartItems");
+  var foodID = parentDiv.data("id");
+  var orderID = parentDiv.data("order_id");
+  $.ajax({
+    url: "/FoodTake/customer_signin/cancel_order.php",
+    method: "POST",
+    data: {
+      foodID: foodID,
+      orderID: orderID,
+    },
+    success: function (response) {
+      console.log(response);
+      if (response.includes("successfully")) {
+        parentDiv.remove();
+      } else {
+        alert("Something went wrong");
+      }
+    },
+    error: function (xhr, status, error) {
+      alert(responseText);
       console.error(xhr.responseText);
     },
   });

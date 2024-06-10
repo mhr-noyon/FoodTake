@@ -95,6 +95,9 @@ echo  $_SESSION['admin_username'];
                               if (mysqli_num_rows($result) > 0) {
                                    while ($row = $result->fetch_assoc()) {
 
+                                        $sql = "SELECT username FROM customers WHERE customer_id = " . $row['customer_id'];
+                                        $result2 = mysqli_query($conn, $sql);
+                                        $row2 = $result2->fetch_assoc();
                                         echo '<tr class="cartItems" 
                                         data-customerId="' . $row["customer_id"] . '" 
                                         data-order_id="' . $row["order_id"] . '" 
@@ -102,7 +105,7 @@ echo  $_SESSION['admin_username'];
                                         data-address="' . $row["address"] . '" 
                                         data-id="' . $row["food_id"] . '" data-name="' . $row["food_name"] . '" data-status="' . $row["status"] . '">
                <td> ' . $row["customer_id"] . ' </td>
-               <td>' . '$row["customer_name"]' . '</td>
+               <td>' . $row2["username"] . '</td>
                <td>' . $row["phone"] . '</td>
                <td>' . $row["address"] . '</td>
                <td>' . $row["food_name"] . '</td>
@@ -127,7 +130,7 @@ echo  $_SESSION['admin_username'];
                               } else {
                          ?>
                                    <tr>
-                                        <td colspan="6" style="text-align: center;">No items in the cart</td>
+                                        <td colspan="10" style="text-align: center;">No items in the cart</td>
                                    </tr>
                          <?php
                               }
@@ -161,22 +164,11 @@ echo  $_SESSION['admin_username'];
                          </tr>
                     </thead>
                     <tbody>
-                         <!-- <tr class="cartItems" style="display: none;">
-                                   <td></td>
-                                   <td></td>
-                                   <td id='item-price' class='item-price'>0</td>
-                                   <span class="item-id" id="item-id" style="display:none"></span>
-                                   <td>
-                                        <div data-mdb-input-init class="form-outline quantity-div" style="width: 22rem;"><input type="number" min="1" value="1" id="quantity" class="form-control quantity" />0</div>
-                                   </td>
-                                   <td><span class="item-total-price" id="item-total-price">0</span></td>'.
-                                   '<td><button class="btn btn-danger" onclick="removeFood(this)"></button></td>
-                              </tr> -->
                          <?php
                          include "db_conn.php";
                          $_SESSION['completedOrderCount'] = 0;
                          if (isset($_SESSION['admin_username'])) {
-                              $sql = "SELECT customer_id, phone,address, food_id, food_name,quantity,total_amount,status,  CONCAT(
+                              $sql = "SELECT  delivery_boy,customer_id, phone,address, food_id, food_name,quantity,total_amount,status,  CONCAT(
                                         DAY(order_date),
                                         CASE
                                              WHEN DAY(order_date) IN (1, 21, 31) THEN 'st'
@@ -193,13 +185,19 @@ echo  $_SESSION['admin_username'];
                                    $_SESSION['totalSell'] = 0;
                                    while ($row = $result->fetch_assoc()) {
 
+                                        $sql = "SELECT username FROM customers WHERE customer_id = " . $row['customer_id'];
+                                        $result2 = mysqli_query($conn, $sql);
+                                        $row2 = $result2->fetch_assoc();
+                                        $sql2= "SELECT username from deliveryboys where delivery_boy_id = ".$row['delivery_boy'];
+                                        $result3 = mysqli_query($conn, $sql2);
+                                        $row3 = $result3->fetch_assoc();
                                         echo '<tr class="cartItems" 
                                         data-customerId="' . $row["customer_id"] . '" 
                                         data-phone="' . $row["phone"] . '" 
                                         data-address="' . $row["address"] . '" 
                                         data-id="' . $row["food_id"] . '" data-name="' . $row["food_name"] . '" data-status="' . $row["status"] . '">
                <td> ' . $row["customer_id"] . ' </td>
-               <td>' . '$row["customer_name"]' . '</td>
+               <td>' . $row2["username"] . '</td>
                <td>' . $row["phone"] . '</td>
                <td>' . $row["address"] . '</td>
                <td>' . $row["food_name"] . '</td>
@@ -207,7 +205,7 @@ echo  $_SESSION['admin_username'];
                <td><span class="item-total-price" id="item-total-price">' . $row["total_amount"] . '</span></td> 
                <td>' . $row["order_date"] . '</td>' . '
                <td>' . $row["status"] . '</td>
-               <td>' . $row["delivery_boy"] . '</td>';
+               <td>' . $row3["username"] . '</td>';
 
                                         echo "</tr>";
                                         $_SESSION['totalSell'] += $row["total_amount"];
@@ -216,7 +214,7 @@ echo  $_SESSION['admin_username'];
                               } else {
                          ?>
                                    <tr>
-                                        <td colspan="6" style="text-align: center;">No items in the cart</td>
+                                        <td colspan="10" style="text-align: center;">No items in the cart</td>
                                    </tr>
                          <?php
                               }
@@ -232,7 +230,7 @@ echo  $_SESSION['admin_username'];
                          if ($_SESSION['completedOrderCount'] > 0) { ?>
 
                               <tr style="font-weight:bold;">
-                                   <td colspan="4" style="text-align: right;">Total</td>
+                                   <td colspan="6" style="text-align: right;">Total</td>
                                    <td id="total-price"><?php echo $_SESSION['totalSell'] ?> TK</td>
                                    <td></td>
                               </tr>

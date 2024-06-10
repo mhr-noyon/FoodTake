@@ -55,7 +55,7 @@ echo  $_SESSION['admin_username'];
                     </div>
                     <div class="mb-3">
                          <label for="description" class="form-label">Description</label>
-                         <input type="text" class="form-control" id="description" value="0" name="description" required>
+                         <input type="text" class="form-control" id="description" value="" name="description" required>
                     </div>
                     <div class="mb-3">
                          <label for="image" class="form-label">Image</label>
@@ -81,17 +81,6 @@ echo  $_SESSION['admin_username'];
                          </tr>
                     </thead>
                     <tbody>
-                         <!-- <tr class="cartItems" style="display: none;">
-                                   <td></td>
-                                   <td></td>
-                                   <td id='item-price' class='item-price'>0</td>
-                                   <span class="item-id" id="item-id" style="display:none"></span>
-                                   <td>
-                                        <div data-mdb-input-init class="form-outline quantity-div" style="width: 22rem;"><input type="number" min="1" value="1" id="quantity" class="form-control quantity" />0</div>
-                                   </td>
-                                   <td><span class="item-total-price" id="item-total-price">0</span></td>'.
-                                   '<td><button class="btn btn-danger" onclick="removeFood(this)"></button></td>
-                              </tr> -->
                          <?php
                          include "db_conn.php";
                          $_SESSION['foodInfoCount'] = 0;
@@ -128,7 +117,7 @@ echo  $_SESSION['admin_username'];
                               } else {
                          ?>
                                    <tr>
-                                        <td colspan="6" style="text-align: center;">No items in the cart</td>
+                                        <td colspan="7" style="text-align: center;">No items in the cart</td>
                                    </tr>
                          <?php
                               }

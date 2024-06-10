@@ -1,22 +1,36 @@
-let countShowFood = 0;
+
+
+let countDiv = document.getElementById("foodListLength");
+countDiv.value = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
   const ajax = new XMLHttpRequest();
   const foodList = document.getElementById("foodList");
+
   const waitingText = document.getElementById("waiting_for_food");
+
   ajax.open("GET", "/FoodTake/javascript/meal.json", true);
   ajax.onload = function () {
     if (this.status == 200) {
       const val = JSON.parse(this.responseText);
       console.log(val);
-      let count = 0;
-      waitingText.style.display = "none";
 
-      for (let i = 0; i < val.length; i++) {
+      let countDiv = document.getElementById("foodListLength");
+      let count = parseInt(countDiv.value);
+      console.log(count,val.length);
+
+
+      waitingText.style.display = "none";
+      if(val.length <= 20+count){
+        document.getElementById("showMore").style.display = "none";
+      }
+
+
+      for (let i = count; i < val.length; i++) {
         if (count == 20) {
           break;
         }
-        const meal = val[i + countShowFood++];
+        const meal = val[i];
         const foodElement = document.createElement("div");
         foodElement.classList.add("food");
         foodElement.dataset.id = meal.id;
@@ -53,6 +67,12 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   ajax.send();
 });
+function showMore(){
+  let countDiv = document.getElementById("foodListLength");
+  let count = parseInt(countDiv.value);
+  countDiv.value = count+20;
+  location.reload();
+}
 // let countShowFood = 0;
 // document.addEventListener("DOMContentLoaded", () => {
 //   const ajax = new XMLHttpRequest();

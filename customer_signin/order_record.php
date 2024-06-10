@@ -18,7 +18,8 @@ if ($_SESSION['count'] > 0) {
                          $total_amount = $row["price"] * $quantity;
                          $address = $_POST['address'];
                          $phone = $_POST['phone'];
-                         $sql = "INSERT INTO orders (customer_id, food_id, quantity, total_amount,food_name,image,address,phone) VALUES ('$user_id', '$food_id', '$quantity', '$total_amount','$food_name','$image','$address','$phone')";
+                         $pin = rand(10000, 99999);
+                         $sql = "INSERT INTO orders (customer_id, food_id, quantity, total_amount,food_name,image,address,phone,pin) VALUES ('$user_id', '$food_id', '$quantity', '$total_amount','$food_name','$image','$address','$phone','$pin')";
                          if (mysqli_query($conn, $sql)) {
                               echo "
                          <script>

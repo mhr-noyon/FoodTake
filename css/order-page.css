@@ -11,6 +11,9 @@
 .bg-image{
   background-color: rgb(67, 253, 253,0.5);
 }
+.total-price{
+  text-align: left !important;
+}
 #eating{
   width: 450px;
   /* height: 350px; */
