@@ -1,4 +1,4 @@
-<h3>This is a website of resatuarant management system called FoodTake.</h3><br>
+<h3>This is an website of resatuarant management system called FoodTake.</h3><br>
 <h2>Features:
   <u>
     <li>Customer can add foods to cart then order. After placing order customer will get a random code. Customers can track his order also can cancel their order if the order is not ready yet.</li>
