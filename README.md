@@ -6,4 +6,4 @@
     <li>Admin can manage whole things. They can assign staff for any order.</li>
     <li>Staff will place the order to customer after getting order and get the code from customer which is needed to complete his order on website.</li>
   </u></h2><br>
-<h3>Run program: An database is used. The database codes are attached. The sql codes have to be runned manually before running program. Then Run the "home_page.php" file</h3>
+<h3>Run program: An database is used. The database codes are attached in "foodtake.sql" file. The sql codes have to be runned manually before running program. Then Run the "home_page.php" file</h3>
